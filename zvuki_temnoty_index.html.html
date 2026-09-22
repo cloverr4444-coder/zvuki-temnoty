@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#08090d">
+<title>Звуки темноты — 10 вопросов</title>
+<style>
+:root{--bg:#08090d;--line:#2a2d38;--text:#f6f2e9;--muted:#a4a5ad;--gold:#d8b66a;--gold2:#f1d898}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;width:100%;height:100%;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;overflow:hidden}
+body{display:flex;align-items:center;justify-content:center}
+.app{width:100%;height:100%;position:relative;overflow:hidden;background:radial-gradient(circle at 80% 10%,rgba(216,182,106,.14),transparent 27%),radial-gradient(circle at 15% 90%,rgba(255,255,255,.05),transparent 25%),linear-gradient(145deg,#07080c,#12141b 58%,#08090d)}
+.orb{position:absolute;width:380px;height:380px;border-radius:50%;right:-145px;top:-175px;background:radial-gradient(circle,rgba(216,182,106,.2),transparent 67%);animation:pulse 5s ease-in-out infinite}
+.orb2{position:absolute;width:300px;height:300px;border-radius:50%;left:-160px;bottom:-180px;background:radial-gradient(circle,rgba(255,255,255,.07),transparent 68%)}
+.top{position:absolute;left:0;right:0;top:0;padding:22px 28px 12px;z-index:3;display:flex;justify-content:space-between;align-items:center}
+.brand{font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted)}
+.counter{font-size:12px;letter-spacing:.12em;color:var(--muted)}
+.progress{position:absolute;left:28px;right:28px;top:56px;height:4px;border-radius:99px;background:#242731;z-index:3;overflow:hidden}
+.progress span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--gold),var(--gold2));transition:width .55s ease}
+main{height:100%;display:flex;align-items:center;justify-content:center;padding:90px 22px 58px;position:relative;z-index:2}
+.screen{width:min(920px,100%);text-align:center;animation:enter .48s ease}
+.eyebrow{color:var(--gold2);font-size:13px;letter-spacing:.24em;text-transform:uppercase;margin-bottom:18px}
+h1{font-size:clamp(48px,10vw,100px);line-height:.88;letter-spacing:-.055em;margin:0 0 24px;font-weight:850}
+h2{font-size:clamp(29px,5.1vw,57px);line-height:1.04;letter-spacing:-.04em;margin:0 auto 30px;max-width:880px}
+p{font-size:clamp(17px,2.5vw,24px);line-height:1.5;color:#c7c7cc;max-width:720px;margin:0 auto 28px}
+.primary,.choice{font:inherit;cursor:pointer;touch-action:manipulation;border-radius:20px;font-weight:750}
+.primary{min-height:76px;min-width:270px;padding:18px 28px;border:1px solid var(--gold);background:var(--gold);color:#17140e;font-size:18px;box-shadow:0 12px 40px rgba(216,182,106,.17)}
+.primary:active,.choice:active{transform:scale(.975)}
+.choices{display:grid;grid-template-columns:repeat(3,1fr);gap:15px;max-width:870px;margin:0 auto}
+.choice{min-height:128px;padding:18px 14px;border:1px solid #383c48;background:rgba(255,255,255,.035);color:var(--text);font-size:clamp(16px,2.25vw,21px);transition:.2s ease}
+.choice:hover{border-color:#777b86;background:rgba(255,255,255,.075);transform:translateY(-2px)}
+.num{display:block;color:var(--gold2);font-size:11px;letter-spacing:.16em;margin-bottom:10px}
+.hint{font-size:13px;color:#777a83;margin-top:17px}
+.tags{display:flex;justify-content:center;flex-wrap:wrap;gap:9px;margin:20px auto;max-width:720px}
+.tag{border:1px solid var(--line);border-radius:999px;padding:9px 13px;color:#c9c9cf;font-size:13px}
+.finalNum{font-size:clamp(58px,10vw,94px);line-height:1;color:var(--gold2);font-weight:850;margin-bottom:10px}
+.prize{max-width:700px;margin:18px auto;padding:22px;border:1px solid rgba(216,182,106,.45);border-radius:20px;background:rgba(216,182,106,.08);font-size:20px;line-height:1.45}
+.prize strong{font-size:clamp(23px,4vw,36px);color:var(--gold2)}
+.admin{max-width:700px;margin:21px auto 20px;padding:17px 20px;border-top:1px solid var(--line);color:var(--muted);font-size:14px;line-height:1.5}
+.admin strong{color:var(--text);letter-spacing:.1em}
+.bottom{position:absolute;left:0;right:0;bottom:14px;text-align:center;color:#62656e;font-size:10px;letter-spacing:.13em;text-transform:uppercase;z-index:3}
+@keyframes pulse{0%,100%{transform:scale(.94);opacity:.7}50%{transform:scale(1.08);opacity:1}}
+@keyframes enter{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:700px){.top{padding:17px 17px 10px}.progress{left:17px;right:17px;top:47px}main{padding:76px 16px 50px}.choices{grid-template-columns:1fr;gap:9px}.choice{min-height:68px;padding:14px}.num{display:inline;margin-right:8px}.bottom{bottom:8px}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="app">
+<div class="orb"></div><div class="orb2"></div>
+<div class="top"><div class="brand">Звуки темноты</div><div class="counter" id="counter">ТИЗЕР</div></div>
+<div class="progress"><span id="progress"></span></div>
+<main><section class="screen" id="screen" aria-live="polite"></section></main>
+<div class="bottom">Иногда, чтобы увидеть больше — нужно закрыть глаза.</div>
+</div>
+<script>
+(function(){
+const screen=document.getElementById('screen'),progress=document.getElementById('progress'),counter=document.getElementById('counter');
+let step=0;
+const questions=[
+['Представьте: свет погас. Что первым станет вашим ориентиром?',['Интуиция','Память','Внимание']],
+['Какой звук легче всего узнать, даже не видя его источника?',['Знакомую песню','Голос близкого человека','Звук привычного предмета']],
+['Что происходит с вниманием, когда вы не можете пользоваться зрением?',['Оно усиливается','Оно отвлекается','Оно ищет подсказки']],
+['Вы слышите первые секунды знакомой мелодии. Что срабатывает раньше?',['Память','Эмоция','Логика']],
+['Какой фильм можно узнать по одному звуку?',['Тот, который хорошо помнишь','Тот, который часто пересматриваешь','Иногда — совершенно неожиданный']],
+['В природе какой звук может оказаться совсем не тем, чем кажется?',['Шорох','Крик','Странный гул']],
+['Предмет рядом, но вы его не видите. Что поможет его узнать?',['Звук','Воображение','Опыт']],
+['В команде один человек заметил деталь, которую пропустили остальные. Что важнее?',['Обсудить','Проверить','Довериться наблюдению']],
+['Перед вами три двери: знакомое, странное и неизвестное. Куда войдёте?',['В знакомое','В странное','В неизвестное']],
+['Вы заходите в абсолютно тёмное пространство. Что сделаете первым?',['Буду искать глазами','Замру и подожду','Начну слушать']]
+];
+function go(n){step=n;render()}
+function render(){
+if(step===0){
+progress.style.width='0%';counter.textContent='ГОТОВЫ?';
+screen.innerHTML='<div class="eyebrow">Интерактивный тизер</div><h1>ЗВУКИ<br>ТЕМНОТЫ</h1><p>10 вопросов.<br>10 выборов.<br>И ни одного лишнего взгляда.</p><button class="primary" id="start">НАЧАТЬ</button><div class="hint">Нажмите и попробуйте довериться своему выбору.</div>';
+document.getElementById('start').onclick=()=>go(1);return;
+}
+if(step<=10){
+const item=questions[step-1],q=item[0],a=item[1];
+progress.style.width=(step*10)+'%';counter.textContent=String(step).padStart(2,'0')+' / 10';
+screen.innerHTML='<div class="eyebrow">Вопрос '+step+' из 10</div><h2>'+q+'</h2><div class="choices">'+a.map((x,i)=>'<button class="choice"><span class="num">0'+(i+1)+'</span>'+x+'</button>').join('')+'</div><div class="hint">Выберите первый ответ, который пришёл в голову.</div>';
+screen.querySelectorAll('.choice').forEach(b=>b.addEventListener('click',()=>go(step+1)));return;
+}
+progress.style.width='100%';counter.textContent='ПРИЗ';
+screen.innerHTML='<div class="eyebrow">Поздравляем!</div><div class="finalNum">10 / 10</div><h2>Вы выиграли скидку<br>300 ₽</h2><p>Скидка на первое посещение игры «Звуки темноты».</p><div class="prize"><strong>🎁 Ваша награда — 300 ₽</strong><br>Скидка на первое посещение.</div><div class="admin"><strong>ДАЛЬНЕЙШАЯ ИНСТРУКЦИЯ — У АДМИНИСТРАТОРА</strong><br>Передайте ему этот экран — он расскажет, как воспользоваться скидкой и попасть на игру.</div><button class="primary" id="again">ПРОЙТИ ЕЩЁ РАЗ</button>';
+document.getElementById('again').onclick=()=>go(0);
+}
+render();
+})();
+</script>
+</body>
+</html>
